@@ -42,6 +42,7 @@
       padding: 10px 15px;
       text-decoration: none;
       border-radius: 5px;
+      cursor: pointer;
     }
     .btn:hover {
       background: #e88b00;
@@ -57,64 +58,64 @@
 
 <div class="container">
 
-  <div class="product">
+  <div class="product" data-keywords="repose pieds ergonomique">
     <h2>Repose-pieds ergonomique</h2>
     <p>Améliorez votre posture au bureau.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=repose+pieds+ergonomique&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="support ordinateur portable">
     <h2>Support ordinateur portable</h2>
     <p>Surélevez votre écran pour soulager votre cou.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=support+ordinateur+portable&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="lampe de bureau LED">
     <h2>Lampe de bureau LED</h2>
     <p>Éclairage doux pour mieux travailler.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=lampe+de+bureau+led&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="tapis souris ergonomique">
     <h2>Tapis de souris ergonomique</h2>
     <p>Confort optimal avec repose-poignet intégré.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=tapis+souris+ergonomique&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="chaise de bureau ergonomique">
     <h2>Chaise de bureau ergonomique</h2>
     <p>Support lombaire et assise confortable.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=chaise+de+bureau+ergonomique&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="organisateur de bureau">
     <h2>Organisateur de bureau</h2>
     <p>Gardez vos accessoires bien rangés.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=organisateur+de+bureau&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="tapis de bureau XL">
     <h2>Tapis de bureau XL</h2>
     <p>Grand espace pour souris et clavier.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=tapis+de+bureau+xl&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="support écran PC">
     <h2>Support écran PC</h2>
     <p>Améliorez votre posture en surélevant votre écran.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=support+écran+pc&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="support téléphone bureau">
     <h2>Support téléphone bureau</h2>
     <p>Gardez votre téléphone visible à tout moment.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=support+téléphone+bureau&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
-  <div class="product">
+  <div class="product" data-keywords="hub USB pour PC">
     <h2>Hub USB pour PC</h2>
     <p>Ajoutez plusieurs ports à votre ordinateur.</p>
-    <a class="btn" href="https://www.amazon.fr/s?k=hub+usb+pour+pc&tag=xoreon18-21" target="_blank">Voir sur Amazon</a>
+    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
   </div>
 
 </div>
@@ -122,6 +123,15 @@
 <footer>
   <p>Ce site participe au programme Partenaires Amazon. Chaque clic peut générer une commission.</p>
 </footer>
+
+<script>
+  function searchAmazon(button) {
+    const keywords = button.closest('.product').dataset.keywords;
+    const encoded = encodeURIComponent(keywords.trim());
+    const url = `https://www.amazon.fr/s?k=${encoded}&tag=xoreon18-21`;
+    window.open(url, '_blank');
+  }
+</script>
 
 </body>
 </html>
