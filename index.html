@@ -60,6 +60,12 @@
     .btn:hover {
       background: #e88b00;
     }
+    .no-results {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -74,6 +80,7 @@
     <input type="text" id="searchInput" placeholder="Rechercher un produit ergonomique...">
   </div>
   <div class="grid" id="productGrid"></div>
+  <p class="no-results" id="noResults" style="display:none;">Aucun produit trouvé.</p>
 </div>
 
 <footer>
@@ -81,33 +88,46 @@
 </footer>
 
 <script>
-  const produits = [
-    "Tabouret Réglable", "Tabouret Flexible", "Repose-Poignets Ergonomique", "Liseuse Multifonction",
-    "Calepin Portable", "Pouf En Bois", "Lampe Led", "Boîte De Rangement Avec Roulettes", "Fauteuil Réglable",
-    "Support Moderne", "Organisateur Design", "Bureau Compact", "Repose-Pieds Antidérapant",
-    "Clavier Ergonomique", "Souris Sans Fil Ergonomique", "Casque Audio Confort", "Housse De Chaise Pliable",
-    "Station De Charge Usb", "Tiroir Coulissant Flexible", "Organiseur Mural Bois", "Veilleuse Led",
-    // Tu peux en rajouter encore pour aller jusqu’à 200
+  const produits = [];
+  const nomsExemples = [
+    \"Bureau ergonomique\", \"Chaise réglable\", \"Support écran\", \"Lampe LED bureau\",
+    \"Clavier split\", \"Souris verticale\", \"Repose-pieds\", \"Tabouret actif\",
+    \"Tapis anti-fatigue\", \"Bras articulé\", \"Station de travail\", \"Rehausseur d'écran\",
+    \"Boîte de rangement\", \"Housse de chaise\", \"Casque audio confort\", \"Organiseur mural\",
+    \"Étagère modulaire\", \"Support laptop\", \"Veilleuse bureau\", \"Fauteuil scandinave\"
   ];
+  for (let i = 1; i <= 200; i++) {
+    const baseName = nomsExemples[i % nomsExemples.length];
+    produits.push(`${baseName} ${i}`);
+  }
 
-  const grid = document.getElementById("productGrid");
-  produits.forEach(nom => {
-    const item = document.createElement("div");
-    item.className = "product";
-    item.innerHTML = `
-      <h2>${nom}</h2>
-      <a class="btn" href="recherche.html?produit=${encodeURIComponent(nom)}">Voir les options</a>
-    `;
-    grid.appendChild(item);
-  });
+  const grid = document.getElementById(\"productGrid\");
+  const noResults = document.getElementById(\"noResults\");
 
-  document.getElementById("searchInput").addEventListener("input", function () {
-    const val = this.value.toLowerCase();
-    const cards = document.querySelectorAll(".product");
-    cards.forEach(card => {
-      card.style.display = card.innerText.toLowerCase().includes(val) ? "block" : "none";
+  function afficherProduits(filtre = \"\") {
+    grid.innerHTML = \"\";
+    let count = 0;
+    produits.forEach(nom => {
+      if (nom.toLowerCase().includes(filtre.toLowerCase())) {
+        const item = document.createElement(\"div\");
+        item.className = \"product\";
+        item.innerHTML = `
+          <h2>${nom}</h2>
+          <a class=\"btn\" href=\"recherche.html?produit=${encodeURIComponent(nom)}\">Voir les options</a>
+        `;
+        grid.appendChild(item);
+        count++;
+      }
     });
+    noResults.style.display = count === 0 ? \"block\" : \"none\";
+  }
+
+  document.getElementById(\"searchInput\").addEventListener(\"input\", function () {
+    afficherProduits(this.value);
   });
+
+  // afficher tous les produits au démarrage
+  afficherProduits();
 </script>
 
 </body>
