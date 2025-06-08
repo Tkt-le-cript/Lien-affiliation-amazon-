@@ -88,18 +88,16 @@
 </footer>
 
 <script>
-  const categories = [
-    "Bureau réglable", "Chaise ergonomique", "Support pour écran",
-    "Lampe LED de bureau", "Clavier ergonomique", "Souris verticale",
-    "Repose-pieds ajustable", "Tabouret actif", "Tapis anti-fatigue",
-    "Bras articulé d'écran", "Station de travail", "Rehausseur d'écran",
+  const produits = [
+    "Bureau réglable", "Chaise ergonomique", "Support pour écran", "Lampe LED de bureau",
+    "Clavier ergonomique", "Souris verticale", "Repose-pieds ajustable", "Tabouret actif",
+    "Tapis anti-fatigue", "Bras articulé d'écran", "Station de travail", "Rehausseur d'écran",
     "Organiseur mural", "Étagère murale", "Support PC portable"
   ];
 
-  const produits = [];
-  for (let i = 1; i <= 150; i++) {
-    const base = categories[i % categories.length];
-    produits.push(`${base} ${i}`);
+  const productList = [];
+  for (let i = 0; i < 150; i++) {
+    productList.push(produits[i % produits.length]);
   }
 
   const grid = document.getElementById("productGrid");
@@ -108,7 +106,7 @@
   function afficherProduits(filtre = "") {
     grid.innerHTML = "";
     let count = 0;
-    produits.forEach(nom => {
+    productList.forEach(nom => {
       if (nom.toLowerCase().includes(filtre.toLowerCase())) {
         const item = document.createElement("div");
         item.className = "product";
