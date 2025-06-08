@@ -72,7 +72,7 @@
 
 <header>
   <h1>ErgoBureau</h1>
-  <p>Découvrez plus de 300 produits ergonomiques</p>
+  <p>Découvrez plus de 150 produits ergonomiques</p>
 </header>
 
 <div class="container">
@@ -89,15 +89,15 @@
 
 <script>
   const categories = [
-    "Bureau ergonomique", "Chaise réglable", "Support écran", "Lampe LED bureau",
-    "Clavier split", "Souris verticale", "Repose-pieds", "Tabouret actif",
-    "Tapis anti-fatigue", "Bras articulé", "Station de travail", "Rehausseur d'écran",
-    "Boîte de rangement", "Housse de chaise", "Casque audio confort", "Organiseur mural",
-    "Étagère modulaire", "Support laptop", "Veilleuse bureau", "Hub USB intelligent"
+    "Bureau réglable", "Chaise ergonomique", "Support pour écran",
+    "Lampe LED de bureau", "Clavier ergonomique", "Souris verticale",
+    "Repose-pieds ajustable", "Tabouret actif", "Tapis anti-fatigue",
+    "Bras articulé d'écran", "Station de travail", "Rehausseur d'écran",
+    "Organiseur mural", "Étagère murale", "Support PC portable"
   ];
 
   const produits = [];
-  for (let i = 1; i <= 300; i++) {
+  for (let i = 1; i <= 150; i++) {
     const base = categories[i % categories.length];
     produits.push(`${base} ${i}`);
   }
