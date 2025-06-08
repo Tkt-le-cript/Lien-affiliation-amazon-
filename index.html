@@ -72,7 +72,7 @@
 
 <header>
   <h1>ErgoBureau</h1>
-  <p>Découvrez plus de 200 produits ergonomiques</p>
+  <p>Découvrez plus de 300 produits ergonomiques</p>
 </header>
 
 <div class="container">
@@ -88,45 +88,45 @@
 </footer>
 
 <script>
-  const produits = [];
-  const nomsExemples = [
-    \"Bureau ergonomique\", \"Chaise réglable\", \"Support écran\", \"Lampe LED bureau\",
-    \"Clavier split\", \"Souris verticale\", \"Repose-pieds\", \"Tabouret actif\",
-    \"Tapis anti-fatigue\", \"Bras articulé\", \"Station de travail\", \"Rehausseur d'écran\",
-    \"Boîte de rangement\", \"Housse de chaise\", \"Casque audio confort\", \"Organiseur mural\",
-    \"Étagère modulaire\", \"Support laptop\", \"Veilleuse bureau\", \"Fauteuil scandinave\"
+  const categories = [
+    "Bureau ergonomique", "Chaise réglable", "Support écran", "Lampe LED bureau",
+    "Clavier split", "Souris verticale", "Repose-pieds", "Tabouret actif",
+    "Tapis anti-fatigue", "Bras articulé", "Station de travail", "Rehausseur d'écran",
+    "Boîte de rangement", "Housse de chaise", "Casque audio confort", "Organiseur mural",
+    "Étagère modulaire", "Support laptop", "Veilleuse bureau", "Hub USB intelligent"
   ];
-  for (let i = 1; i <= 200; i++) {
-    const baseName = nomsExemples[i % nomsExemples.length];
-    produits.push(`${baseName} ${i}`);
+
+  const produits = [];
+  for (let i = 1; i <= 300; i++) {
+    const base = categories[i % categories.length];
+    produits.push(`${base} ${i}`);
   }
 
-  const grid = document.getElementById(\"productGrid\");
-  const noResults = document.getElementById(\"noResults\");
+  const grid = document.getElementById("productGrid");
+  const noResults = document.getElementById("noResults");
 
-  function afficherProduits(filtre = \"\") {
-    grid.innerHTML = \"\";
+  function afficherProduits(filtre = "") {
+    grid.innerHTML = "";
     let count = 0;
     produits.forEach(nom => {
       if (nom.toLowerCase().includes(filtre.toLowerCase())) {
-        const item = document.createElement(\"div\");
-        item.className = \"product\";
+        const item = document.createElement("div");
+        item.className = "product";
         item.innerHTML = `
           <h2>${nom}</h2>
-          <a class=\"btn\" href=\"recherche.html?produit=${encodeURIComponent(nom)}\">Voir les options</a>
+          <a class="btn" href="recherche.html?produit=${encodeURIComponent(nom)}">Voir les options</a>
         `;
         grid.appendChild(item);
         count++;
       }
     });
-    noResults.style.display = count === 0 ? \"block\" : \"none\";
+    noResults.style.display = count === 0 ? "block" : "none";
   }
 
-  document.getElementById(\"searchInput\").addEventListener(\"input\", function () {
+  document.getElementById("searchInput").addEventListener("input", function () {
     afficherProduits(this.value);
   });
 
-  // afficher tous les produits au démarrage
   afficherProduits();
 </script>
 
