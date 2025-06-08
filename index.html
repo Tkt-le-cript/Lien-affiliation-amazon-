@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Accessoires de Bureau Ergonomiques – Amazon Affiliation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ErgoBureau – Produits ergonomiques</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #f8f8f8;
       margin: 0;
       padding: 0;
     }
     header, footer {
-      background: #2c3e50;
+      background: #333;
       color: white;
       text-align: center;
       padding: 20px;
@@ -42,7 +42,6 @@
       padding: 10px 15px;
       text-decoration: none;
       border-radius: 5px;
-      cursor: pointer;
     }
     .btn:hover {
       background: #e88b00;
@@ -52,86 +51,36 @@
 <body>
 
 <header>
-  <h1>Accessoires de Bureau Ergonomiques</h1>
-  <p>Optimisez votre espace de travail avec notre sélection Amazon</p>
+  <h1>ErgoBureau</h1>
+  <p>Optimisez votre confort avec notre sélection Amazon</p>
 </header>
 
 <div class="container">
 
-  <div class="product" data-keywords="repose pieds ergonomique">
-    <h2>Repose-pieds ergonomique</h2>
-    <p>Améliorez votre posture au bureau.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
-  <div class="product" data-keywords="support ordinateur portable">
-    <h2>Support ordinateur portable</h2>
-    <p>Surélevez votre écran pour soulager votre cou.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
-  <div class="product" data-keywords="lampe de bureau LED">
+  <div class="product">
     <h2>Lampe de bureau LED</h2>
     <p>Éclairage doux pour mieux travailler.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
+    <a class="btn" href="recherche.html?produit=lampe+de+bureau+LED">Voir les options</a>
   </div>
 
-  <div class="product" data-keywords="tapis souris ergonomique">
-    <h2>Tapis de souris ergonomique</h2>
-    <p>Confort optimal avec repose-poignet intégré.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
-  <div class="product" data-keywords="chaise de bureau ergonomique">
+  <div class="product">
     <h2>Chaise de bureau ergonomique</h2>
     <p>Support lombaire et assise confortable.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
+    <a class="btn" href="recherche.html?produit=chaise+de+bureau+ergonomique">Voir les options</a>
   </div>
 
-  <div class="product" data-keywords="organisateur de bureau">
-    <h2>Organisateur de bureau</h2>
-    <p>Gardez vos accessoires bien rangés.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
+  <div class="product">
+    <h2>Tapis de souris ergonomique</h2>
+    <p>Confort optimal avec repose-poignet intégré.</p>
+    <a class="btn" href="recherche.html?produit=tapis+souris+ergonomique">Voir les options</a>
   </div>
 
-  <div class="product" data-keywords="tapis de bureau XL">
-    <h2>Tapis de bureau XL</h2>
-    <p>Grand espace pour souris et clavier.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
-  <div class="product" data-keywords="support écran PC">
-    <h2>Support écran PC</h2>
-    <p>Améliorez votre posture en surélevant votre écran.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
-  <div class="product" data-keywords="support téléphone bureau">
-    <h2>Support téléphone bureau</h2>
-    <p>Gardez votre téléphone visible à tout moment.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
-  <div class="product" data-keywords="hub USB pour PC">
-    <h2>Hub USB pour PC</h2>
-    <p>Ajoutez plusieurs ports à votre ordinateur.</p>
-    <span class="btn" onclick="searchAmazon(this)">Voir sur Amazon</span>
-  </div>
-
+  <!-- Tu peux ajouter d'autres produits ici -->
 </div>
 
 <footer>
-  <p>Ce site participe au programme Partenaires Amazon. Chaque clic peut générer une commission.</p>
+  <p>&copy; 2025 ErgoBureau. Tous droits réservés. Ce site participe au programme Partenaires Amazon.</p>
 </footer>
-
-<script>
-  function searchAmazon(button) {
-    const keywords = button.closest('.product').dataset.keywords;
-    const encoded = encodeURIComponent(keywords.trim());
-    const url = `https://www.amazon.fr/s?k=${encoded}&tag=xoreon18-21`;
-    window.open(url, '_blank');
-  }
-</script>
 
 </body>
 </html>
