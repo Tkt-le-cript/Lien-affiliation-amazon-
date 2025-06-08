@@ -1,104 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Filtrer votre recherche – ErgoBureau</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtrer la recherche – ErgoBureau</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
     }
     header, footer {
-      background: #2c3e50;
+      background-color: #2c3e50;
       color: white;
       text-align: center;
       padding: 20px;
     }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       padding: 20px;
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 15px;
     }
-    input, select, button {
+    input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
-      margin-bottom: 15px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
     button {
-      background: #ff9900;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #ff9900;
       color: white;
       border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
     }
     button:hover {
-      background: #e88b00;
+      background-color: #e88b00;
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+      text-decoration: none;
+      color: #2c3e50;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Affinez votre recherche</h1>
+  </header>
 
-<header>
-  <h1>Filtrer votre recherche</h1>
-  <p>Affinez votre sélection avant de visiter Amazon</p>
-</header>
+  <div class="container">
+    <form id="filterForm">
+      <label>Produit</label>
+      <input type="text" id="produit" name="produit" readonly />
 
-<div class="container">
-  <form id="filterForm">
-    <input type="hidden" id="produit" name="produit" />
+      <label for="min">Prix minimum (€)</label>
+      <input type="number" id="min" name="min" placeholder="Ex: 20" />
 
-    <label for="min">Prix minimum (€)</label>
-    <input type="number" id="min" name="min" placeholder="Ex: 20" />
+      <label for="max">Prix maximum (€)</label>
+      <input type="number" id="max" name="max" placeholder="Ex: 100" />
 
-    <label for="max">Prix maximum (€)</label>
-    <input type="number" id="max" name="max" placeholder="Ex: 100" />
+      <label for="couleur">Couleur</label>
+      <input type="text" id="couleur" name="couleur" placeholder="Ex: noir, blanc" />
 
-    <label for="couleur">Couleur (optionnel)</label>
-    <input type="text" id="couleur" name="couleur" placeholder="Ex: noir, blanc..." />
+      <label for="marque">Marque (optionnel)</label>
+      <input type="text" id="marque" name="marque" placeholder="Ex: Logitech, Ikea" />
 
-    <button type="submit">Rechercher sur Amazon</button>
-  </form>
-</div>
+      <label for="style">Style (moderne, minimaliste, etc.)</label>
+      <input type="text" id="style" name="style" placeholder="Ex: moderne, scandinave" />
 
-<footer>
-  <p>&copy; 2025 ErgoBureau. Ce site utilise des liens d’affiliation Amazon.</p>
-</footer>
+      <button type="submit">Voir les offres sur Amazon</button>
+    </form>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const produit = params.get("produit") || "";
-  document.getElementById("produit").value = produit;
+    <a href="index.html" class="back-link">&#8592; Retour aux produits</a>
+  </div>
 
-  document.getElementById("filterForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+  <footer>
+    <p>&copy; 2025 ErgoBureau. Site affilié au programme Amazon Partenaires.</p>
+  </footer>
 
-    const min = document.getElementById("min").value;
-    const max = document.getElementById("max").value;
-    const couleur = document.getElementById("couleur").value;
-    const produitNom = document.getElementById("produit").value;
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const produit = params.get("produit") || "";
+    document.getElementById("produit").value = decodeURIComponent(produit);
 
-    let query = produitNom;
+    document.getElementById("filterForm").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    if (couleur) {
-      query += " " + couleur;
-    }
-    if (min && max) {
-      query += ` ${min}€-${max}€`;
-    }
+      const nom = document.getElementById("produit").value;
+      const min = document.getElementById("min").value;
+      const max = document.getElementById("max").value;
+      const couleur = document.getElementById("couleur").value;
+      const marque = document.getElementById("marque").value;
+      const style = document.getElementById("style").value;
 
-    const amazonUrl = "https://www.amazon.fr/s?k=" + encodeURIComponent(query) + "&tag=xoreon18-21";
+      let query = nom;
+      if (couleur) query += " " + couleur;
+      if (marque) query += " " + marque;
+      if (style) query += " " + style;
+      if (min && max) query += ` ${min}€-${max}€`;
 
-    window.open(amazonUrl, "_blank");
-  });
-</script>
+      const amazonUrl = "https://www.amazon.fr/s?k=" + encodeURIComponent(query) + "&tag=xoreon18-21";
 
+      const link = document.createElement('a');
+      link.href = amazonUrl;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.click();
+    });
+  </script>
 </body>
 </html>
